@@ -1,42 +1,43 @@
-# Proyecto Final de Ciberseguridad: "Red Team vs Blue Team en la Nube: Ataque y Defensa en Azure" 
+# Proyecto Final: Red Team vs Blue Team en la Nube
 
-## Integrantes
+## Descripción
 
-### **Red Team:**
-- Kendall Vargas Ramírez
-- Luis Palacio
-- María Fernanda Bejarano
+Este proyecto simula un entorno de seguridad en Azure, donde los equipos **Red Team** (atacantes) y **Blue Team** (defensores) interactúan. El Blue Team fortalece y protege una VM, mientras que el Red Team intenta explotar vulnerabilidades en la misma.
 
-### **Blue Team:**
-- Gustavo Sanabria
-- Fabián Retana
-- Kevin Marín
+## Roles
 
-## Estructura del Repositorio
+### Blue Team (Defensores):
+- Fortalecen y protegen la VM en Azure.
+- Desarrollan scripts para auditar el sistema, detectar tráfico sospechoso y realizar configuraciones de seguridad.
 
-- **blue_team/**: Contiene los archivos y configuraciones del equipo defensor, incluyendo el script del firewall y documentación.
-- **red_team/**: Contiene los archivos y configuraciones del equipo atacante.
-- **docs/**: Documentación del proyecto, incluyendo detalles de configuración, roles, y pasos de implementación.
-- **README.md**: Información general sobre el proyecto, roles del equipo y cómo ejecutar el sistema.
+### Red Team (Atacantes):
+- Intentan identificar vulnerabilidades en la VM usando herramientas como Nmap, Scapy y ataques de diccionario.
 
-## Puertos Permitidos (NSG)
+## Estructura del Proyecto
 
-- **Puerto 22 (SSH)**: Permitido para permitir acceso remoto seguro a la VM a través de SSH.
-- **Puerto 80 (HTTP)**: Permitido para permitir tráfico web a través del protocolo HTTP.
-- **Puerto 443 (HTTPS)**: Permitido para permitir tráfico web seguro a través del protocolo HTTPS.
-
-### **Reglas de Firewall Configuradas**
-Las reglas de firewall configuradas en el **Network Security Group (NSG)** de la VM permiten únicamente los puertos mencionados. El resto del tráfico entrante está bloqueado por defecto.
-
-## Cómo Ejecutar
-
-1. Clona este repositorio en tu máquina local.
-2. Navega a la carpeta correspondiente (`blue_team/` o `red_team/`).
-3. Para ejecutar el script de firewall en la VM del **Blue Team**, navega hasta `blue_team/firewall_basic.sh` y ejecútalo:
-    ```bash
-    sudo bash firewall_basic.sh
-    ```
-4. Asegúrate de tener configurados los puertos en el **NSG** según lo mencionado.
-5. Sigue las instrucciones adicionales en los archivos de cada equipo para completar la configuración.
+proyecto_ciberseguridadG6/
+├── blue_team/
+│ ├── firewall_hardening.sh # Configuración de firewall
+│ ├── sniffer_defense.py # Detección de tráfico
+│ ├── os_audit.py # Auditoría de sistema
+│ └── alert_logger.py # Registro y reacciones
+├── red_team/
+│ ├── scanner.py # Escaneo de puertos
+│ ├── packet_attack.py # Sniffing y ARP Spoofing
+│ ├── ssh_brute.py # Ataque de diccionario
+│ └── report.md # Documentación de ataques
+└── README.md
 
 
+## Cómo Correr
+
+1. **Blue Team**:
+   - Ejecuta los scripts de defensa (por ejemplo, `python3 blue_team/os_audit.py`) para auditar y proteger la VM.
+   
+2. **Red Team**:
+   - Ejecuta los scripts de ataque (por ejemplo, `python3 red_team/scanner.py`) para escanear la VM y buscar vulnerabilidades.
+
+## Evaluación
+
+- **Blue Team**: Éxito si logra proteger la VM y detectar ataques.
+- **Red Team**: Éxito si logra vulnerar la VM y documentar sus métodos.
