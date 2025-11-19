@@ -1,0 +1,185 @@
+*** Auditoría de Seguridad Iniciada: 2025-11-19 19:00:50 ***
+
+===== 1. PUERTOS ABIERTOS Y SERVICIOS EN ESCUCHA (ss -tuln) =====
+Netid State  Recv-Q Send-Q   Local Address:Port Peer Address:PortProcess
+udp   UNCONN 0      0           127.0.0.54:53        0.0.0.0:*
+udp   UNCONN 0      0        127.0.0.53%lo:53        0.0.0.0:*
+udp   UNCONN 0      0      172.16.0.4%eth0:68        0.0.0.0:*
+udp   UNCONN 0      0            127.0.0.1:323       0.0.0.0:*
+udp   UNCONN 0      0                [::1]:323          [::]:*
+tcp   LISTEN 0      4096        127.0.0.54:53        0.0.0.0:*
+tcp   LISTEN 0      4096     127.0.0.53%lo:53        0.0.0.0:*
+tcp   LISTEN 0      4096           0.0.0.0:22        0.0.0.0:*
+tcp   LISTEN 0      4096              [::]:22           [::]:*
+
+===== 2. LISTADO DE USUARIOS DEL SISTEMA (/etc/passwd) =====
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:996:996:systemd Time Synchronization:/:/usr/sbin/nologin
+dhcpcd:x:100:65534:DHCP Client Daemon,,,:/usr/lib/dhcpcd:/bin/false
+messagebus:x:101:101::/nonexistent:/usr/sbin/nologin
+syslog:x:102:102::/nonexistent:/usr/sbin/nologin
+systemd-resolve:x:991:991:systemd Resolver:/:/usr/sbin/nologin
+uuidd:x:103:103::/run/uuidd:/usr/sbin/nologin
+tss:x:104:104:TPM software stack,,,:/var/lib/tpm:/bin/false
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+pollinate:x:106:1::/var/cache/pollinate:/bin/false
+tcpdump:x:107:108::/nonexistent:/usr/sbin/nologin
+landscape:x:108:109::/var/lib/landscape:/usr/sbin/nologin
+fwupd-refresh:x:990:990:Firmware update daemon:/var/lib/fwupd:/usr/sbin/nologin
+polkitd:x:989:989:User for polkitd:/:/usr/sbin/nologin
+_chrony:x:109:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+azureuser:x:1000:1000:Ubuntu:/home/azureuser:/bin/bash
+
+===== 3. SERVICIOS ACTIVOS (ps aux | head) =====
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.2  0.1  22616 13712 ?        Ss   18:38   0:03 /sbin/init
+root           2  0.0  0.0      0     0 ?        S    18:38   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    18:38   0:00 [pool_workqueue_release]
+root           4  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-rcu_gp]
+root           5  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-sync_wq]
+root           6  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-kvfree_rcu_reclaim]
+root           7  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-slub_flushwq]
+root           8  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-netns]
+root          10  0.0  0.0      0     0 ?        I    18:38   0:00 [kworker/0:1-cgroup_destroy]
+root          11  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/0:0H-events_highpri]
+root          12  0.0  0.0      0     0 ?        I    18:38   0:00 [kworker/u8:0-writeback]
+root          13  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-mm_percpu_wq]
+root          14  0.0  0.0      0     0 ?        I    18:38   0:00 [rcu_tasks_rude_kthread]
+root          15  0.0  0.0      0     0 ?        I    18:38   0:00 [rcu_tasks_trace_kthread]
+root          16  0.0  0.0      0     0 ?        S    18:38   0:00 [ksoftirqd/0]
+root          17  0.0  0.0      0     0 ?        I    18:38   0:00 [rcu_sched]
+root          18  0.0  0.0      0     0 ?        S    18:38   0:00 [rcu_exp_par_gp_kthread_worker/0]
+root          19  0.0  0.0      0     0 ?        S    18:38   0:00 [rcu_exp_gp_kthread_worker]
+root          20  0.0  0.0      0     0 ?        S    18:38   0:00 [migration/0]
+root          21  0.0  0.0      0     0 ?        S    18:38   0:00 [idle_inject/0]
+root          22  0.0  0.0      0     0 ?        S    18:38   0:00 [cpuhp/0]
+root          23  0.0  0.0      0     0 ?        S    18:38   0:00 [cpuhp/1]
+root          24  0.0  0.0      0     0 ?        S    18:38   0:00 [idle_inject/1]
+root          25  0.0  0.0      0     0 ?        S    18:38   0:00 [migration/1]
+root          26  0.0  0.0      0     0 ?        S    18:38   0:00 [ksoftirqd/1]
+root          28  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/1:0H-events_highpri]
+root          29  0.0  0.0      0     0 ?        S    18:38   0:00 [kdevtmpfs]
+root          30  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-inet_frag_wq]
+root          31  0.0  0.0      0     0 ?        S    18:38   0:00 [kauditd]
+root          32  0.0  0.0      0     0 ?        S    18:38   0:00 [khungtaskd]
+root          33  0.0  0.0      0     0 ?        I    18:38   0:00 [kworker/u8:1-flush-8:0]
+root          34  0.0  0.0      0     0 ?        S    18:38   0:00 [oom_reaper]
+root          35  0.0  0.0      0     0 ?        I    18:38   0:00 [kworker/u8:2-events_unbound]
+root          36  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-writeback]
+root          37  0.0  0.0      0     0 ?        S    18:38   0:00 [kcompactd0]
+root          38  0.0  0.0      0     0 ?        SN   18:38   0:00 [ksmd]
+root          39  0.0  0.0      0     0 ?        SN   18:38   0:00 [khugepaged]
+root          40  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-kintegrityd]
+root          41  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-kblockd]
+root          42  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-blkcg_punt_bio]
+root          43  0.0  0.0      0     0 ?        S    18:38   0:00 [irq/9-acpi]
+root          45  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-tpm_dev_wq]
+root          46  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-ata_sff]
+root          47  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-md]
+root          48  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-md_bitmap]
+root          49  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-edac-poller]
+root          50  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-hv_vmbus_con]
+root          51  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-hv_vmbus_rescind]
+root          52  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-hv_pri_chan]
+root          53  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-hv_sub_chan]
+root          54  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-devfreq_wq]
+root          55  0.0  0.0      0     0 ?        S    18:38   0:00 [watchdogd]
+root          56  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/1:1H-kblockd]
+root          57  0.0  0.0      0     0 ?        S    18:38   0:00 [kswapd0]
+root          58  0.0  0.0      0     0 ?        S    18:38   0:00 [ecryptfs-kthread]
+root          59  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-kthrotld]
+root          60  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-nfit]
+root          61  0.0  0.0      0     0 ?        S    18:38   0:00 [hwrng]
+root          62  0.0  0.0      0     0 ?        S    18:38   0:00 [scsi_eh_0]
+root          63  0.0  0.0      0     0 ?        S    18:38   0:00 [scsi_eh_1]
+root          64  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-scsi_tmf_0]
+root          65  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-scsi_tmf_1]
+root          66  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-nvme-wq]
+root          67  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-nvme-reset-wq]
+root          68  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-nvme-delete-wq]
+root          69  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-nvme-auth-wq]
+root          72  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-mld]
+root          73  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-ipv6_addrconf]
+root          75  0.0  0.0      0     0 ?        S    18:38   0:00 [hv_balloon]
+root          81  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-kstrp]
+root          83  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/u9:0]
+root          97  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/0:1H-kblockd]
+root          98  0.0  0.0      0     0 ?        S    18:38   0:00 [jbd2/sda1-8]
+root          99  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-ext4-rsv-conversion]
+root         101  0.0  0.0      0     0 ?        I    18:38   0:00 [kworker/1:2-cgroup_destroy]
+root         140  0.0  0.2  50428 16928 ?        S<s  18:38   0:00 /usr/lib/systemd/systemd-journald
+root         161  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-kmpathd]
+root         162  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-kmpath_handlerd]
+root         200  0.0  0.3 288988 27180 ?        SLsl 18:38   0:00 /sbin/multipathd -d -s
+root         204  0.0  0.0  25984  7804 ?        Ss   18:38   0:00 /usr/lib/systemd/systemd-udevd
+root         214  0.0  0.0      0     0 ?        S    18:38   0:00 [psimon]
+root         295  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-cryptd]
+root         317  0.0  0.0   3716  2684 ?        Ss   18:38   0:00 /usr/lib/linux-tools/6.14.0-1012-azure/hv_kvp_daemon -n
+root         323  0.0  0.0      0     0 ?        I    18:38   0:00 [kworker/0:3-mm_percpu_wq]
+root         372  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-mlx4]
+root         376  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-mlx4_health]
+root         398  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-mlx4_en]
+root         457  0.0  0.0      0     0 ?        S    18:38   0:00 [jbd2/sda16-8]
+root         458  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-ext4-rsv-conversion]
+systemd+     516  0.0  0.1  21580 12828 ?        Ss   18:38   0:00 /usr/lib/systemd/systemd-resolved
+systemd+     681  0.0  0.1  19392  9876 ?        Ss   18:38   0:00 /usr/lib/systemd/systemd-networkd
+root         738  0.0  0.0      0     0 ?        S    18:38   0:00 [jbd2/sdb1-8]
+root         739  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-ext4-rsv-conversion]
+message+     790  0.0  0.0   9772  5528 ?        Ss   18:38   0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         794  0.0  0.2  32424 20828 ?        Ss   18:38   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+polkitd      798  0.0  0.0 308164  7940 ?        Ssl  18:38   0:00 /usr/lib/polkit-1/polkitd --no-debug
+root         804  0.0  0.1  18160  8640 ?        Ss   18:38   0:00 /usr/lib/systemd/systemd-logind
+root         816  0.0  0.1 469080 13628 ?        Ssl  18:38   0:00 /usr/libexec/udisks2/udisksd
+root         818  0.0  0.4  44056 35168 ?        Ss   18:38   0:00 /usr/bin/python3 -u /usr/sbin/waagent -daemon
+syslog       881  0.0  0.0 222508  6088 ?        Ssl  18:38   0:00 /usr/sbin/rsyslogd -n -iNONE
+root         906  0.0  0.0   7224  2748 ?        Ss   18:38   0:00 /usr/sbin/cron -f -P
+_chrony      911  0.0  0.0  11204  3624 ?        S    18:38   0:00 /usr/sbin/chronyd -F 1
+_chrony      915  0.0  0.0  11072  1200 ?        S    18:38   0:00 /usr/sbin/chronyd -F 1
+root         919  0.0  0.2 110020 22964 ?        Ssl  18:38   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root         948  0.0  0.1 392024 12672 ?        Ssl  18:38   0:00 /usr/sbin/ModemManager
+root         966  0.0  0.0   6148  2136 ttyS0    Ss+  18:38   0:00 /sbin/agetty -o -p -- \u --keep-baud 115200,57600,38400,9600 - vt220
+root         972  0.0  0.0   6104  2064 tty1     Ss+  18:38   0:00 /sbin/agetty -o -p -- \u --noclear - linux
+root        1014  0.0  0.0      0     0 ?        I<   18:38   0:00 [kworker/R-tls-strp]
+root        1028  0.1  0.4 412168 35408 ?        Sl   18:38   0:02 /usr/bin/python3 -u bin/WALinuxAgent-2.15.0.1-py3.12.egg -run-exthandlers
+root        1132  0.0  0.0  12020  8080 ?        Ss   18:41   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root        1133  0.0  0.1  14732 10500 ?        Ss   18:41   0:00 sshd: azureuser [priv]
+root        1136  0.0  0.0      0     0 ?        S    18:41   0:00 [psimon]
+azureus+    1138  0.0  0.1  20244 11236 ?        Ss   18:41   0:00 /usr/lib/systemd/systemd --user
+azureus+    1139  0.0  0.0  21144  3564 ?        S    18:41   0:00 (sd-pam)
+azureus+    1262  0.0  0.0  14964  7120 ?        S    18:41   0:00 sshd: azureuser@pts/0
+azureus+    1265  0.0  0.0   9192  5364 pts/0    Ss   18:41   0:00 -bash
+root        1350  0.0  0.0      0     0 ?        I    18:50   0:00 [kworker/1:0-events]
+root        1437  2.3  0.7 596932 57780 ?        Ssl  18:59   0:02 /usr/libexec/fwupd/fwupd
+root        1462  0.0  0.0  81808  2904 ?        Ss   18:59   0:00 gpg-agent --homedir /var/lib/fwupd/gnupg --use-standard-socket --daemon
+root        1478  0.0  0.0      0     0 ?        I    18:59   0:00 [kworker/1:1]
+root        1479  0.0  0.0      0     0 ?        I    18:59   0:00 [kworker/u8:3]
+azureus+    1493 30.0  0.1  19860 12032 pts/0    S+   19:00   0:00 python3 /home/azureuser/bt_1script.py
+root        1497  0.0  0.0  25988  4884 ?        S    19:00   0:00 (udev-worker)
+azureus+    1500  0.0  0.0  11320  4456 pts/0    R+   19:00   0:00 ps aux
+
+===== 4. ÚLTIMOS ACCESOS AL SISTEMA (last -n 10) =====
+azureuse pts/0        152.231.218.174  Wed Nov 19 18:41   still logged in
+reboot   system boot  6.14.0-1012-azur Wed Nov 19 18:38   still running
+reboot   system boot  6.14.0-1012-azur Wed Nov 19 18:23 - 18:33  (00:10)
+reboot   system boot  6.14.0-1012-azur Tue Nov 18 21:58 - 22:01  (00:03)
+reboot   system boot  6.14.0-1012-azur Mon Nov 17 04:31 - 04:42  (00:10)
+
+wtmp begins Mon Nov 17 04:31:10 2025
