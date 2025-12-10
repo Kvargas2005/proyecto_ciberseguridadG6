@@ -4,7 +4,7 @@ import sys
 nm = nmap.PortScanner()
 
 
-target_ip = "186.159.216.237"  # Reemplaza con la IP de la VM
+target_ip = "135.237.157.135"  # Reemplaza con la IP de la VM
 
 def scan_target():
     print(f"Escaneando la máquina objetivo: {target_ip}")
@@ -37,3 +37,4 @@ def scan_target():
 
 if __name__ == "__main__":
     scan_target()
+
