@@ -1,5 +1,13 @@
 # Proyecto Final — Red Team vs Blue Team en Azure
 
+#GRUPO 6
+Integrantes:
+- Vargas Ramírez Kendall
+- Retana Mora Fabián Andrés
+- Sanabria Alpizar Gustavo Adolfo
+- Palacio Solorzano Luis Fernando
+- Marín Fallas Kevin
+
 Este proyecto implementa un entorno práctico de ciberseguridad donde dos equipos, **Red Team** (atacante) y **Blue Team** (defensor), interactúan sobre una máquina virtual (VM) desplegada en **Microsoft Azure**.  
 El objetivo es simular un escenario real de ataque y defensa, documentando técnicas ofensivas y mecanismos de detección.
 
