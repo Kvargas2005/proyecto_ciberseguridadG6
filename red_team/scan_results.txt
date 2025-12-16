@@ -1,8 +1,0 @@
-Escaneo de 186.159.216.237
-Estado: up
-
-Protocolo: tcp
-Puerto: 22 - Estado: filtered
-Puerto: 23 - Estado: open
-Puerto: 53 - Estado: open
-Puerto: 80 - Estado: open
